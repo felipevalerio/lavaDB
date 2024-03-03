@@ -1,3 +1,3 @@
 # lavaDB
 
-A basic disk based storage engine
+A key value store in Rust
