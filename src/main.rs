@@ -10,9 +10,7 @@ fn main() {
     let mut input: String = String::new();
     let mut data_map: HashMap<String, String> = HashMap::new();
 
-
-    while choice != 9 {
-
+    loop {
         println!("1) Insert");
         println!("2) Update");
         println!("3) Delete");
@@ -31,15 +29,14 @@ fn main() {
                 println!("Value:");
                 io::stdin().read_line(&mut value);
 
-                storage::put(&mut data_map, key, value);
+                storage::put(&mut data_map, &key, &value);
             }
-                
-            2 => update(),
-            3 => del(),
-            4 => get_all(),
-            9 => break,    
+                    
+            //2 => update(),
+            //3 => del(),
+            4 => storage::get_all(&mut data_map),
+            9 => break,
+            _=> println!("This option does not exist")   
         }
     }
-
-
 }
