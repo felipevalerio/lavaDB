@@ -5,6 +5,8 @@ use std::collections::HashMap;
 fn main() {
     
     let mut choice: i32 = 0;
+    let mut key: String = String::new();
+    let mut value: String = String::new();
     let mut input: String = String::new();
     let mut data_map: HashMap<String, String> = HashMap::new();
 
@@ -22,7 +24,16 @@ fn main() {
         choice = input.trim().parse().unwrap();
 
         match choice {
-            1 => storage::put(&mut data_map),
+            1 => {
+                println!("Key:");
+                io::stdin().read_line(&mut key);
+
+                println!("Value:");
+                io::stdin().read_line(&mut value);
+
+                storage::put(&mut data_map, key, value);
+            }
+                
             2 => update(),
             3 => del(),
             4 => get_all(),

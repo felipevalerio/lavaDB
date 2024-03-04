@@ -1,5 +1,5 @@
 use std::collections::HashMap;
 
-pub fn put (data_map: &mut HashMap<String, String>) {
-	
+pub fn put (data_map: &mut HashMap<String, String>, key: String, value: String) {
+
 }
