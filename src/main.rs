@@ -15,7 +15,7 @@ fn main() {
         println!("2) Update");
         println!("3) Delete");
         println!("4) Get all");
-        println!("9) Exit"); 
+        println!("0) Exit"); 
         println!("Insert your option");
         input.clear();
         io::stdin().read_line(&mut input);
@@ -36,7 +36,7 @@ fn main() {
             //2 => update(),
             //3 => del(),
             4 => storage::get_all(&mut data_map),
-            9 => break,
+            0 => break,
             _=> println!("This option does not exist")   
         }
     }
