@@ -17,6 +17,7 @@ fn main() {
         println!("4) Get all");
         println!("9) Exit"); 
         println!("Insert your option");
+        input.clear();
         io::stdin().read_line(&mut input);
 
         choice = input.trim().parse().unwrap();
