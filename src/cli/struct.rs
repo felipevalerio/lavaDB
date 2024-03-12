@@ -4,6 +4,16 @@ use clap::{Parser, Subcommand};
 #[command(author, version, about, long_about = None)]
 
 pub struct Args {
-	pub key: String,
-	pub value: String
+	#[command(subcommand)]
+	pub cmd: Commands
+}
+
+
+#[derive(Subcommand, Debug, Clone)]
+pub enum Commands {
+	GetAll,
+	Put {
+		key: String,
+		value: String
+	}
 }
