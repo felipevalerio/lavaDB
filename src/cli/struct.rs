@@ -11,7 +11,7 @@ pub struct Args {
 
 #[derive(Subcommand, Debug, Clone)]
 pub enum Commands {
-	GetAll,
+	Get,
 	Put {
 		key: String,
 		value: String
