@@ -6,3 +6,13 @@ pub fn put(data_map: &mut HashMap<String, String>, key: &String, value: &String)
 
 }
 
+
+pub fn get_all(data_map: &mut HashMap<String, String>) {
+
+	println!("{}", data_map.len());
+	
+	for (key, value) in data_map {
+		println!("{} => {}", key, value);
+	}
+
+}

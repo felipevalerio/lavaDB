@@ -1,19 +1,10 @@
 use std::collections::HashMap;
-use clap::{Parser, Subcommand};
+use clap::Parser;
 use command::Commands;
 
 #[path = "storage/storage.rs"] mod storage;
 #[path = "cli/struct.rs"] mod command;
 
-
-pub fn get_all(data_map: &mut HashMap<String, String>) {
-
-    println!("{}", data_map[0]);
-	for (key, value) in data_map {
-		println!("{} => {}", key, value);
-	}
-
-}
 
 fn main() {
     
@@ -21,7 +12,7 @@ fn main() {
     let cli = command::Args::parse();
     
     match cli.cmd {
-        Commands::Get => get_all(&mut data_map),
+        Commands::Get => storage::get_all(&mut data_map),
         Commands::Put { key, value } => storage::put(&mut data_map, &key, &value)
     }
 }
