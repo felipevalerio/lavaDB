@@ -8,6 +8,7 @@ use command::Commands;
 
 pub fn get_all(data_map: &mut HashMap<String, String>) {
 
+    println!("{}", data_map[0]);
 	for (key, value) in data_map {
 		println!("{} => {}", key, value);
 	}
@@ -17,7 +18,6 @@ pub fn get_all(data_map: &mut HashMap<String, String>) {
 fn main() {
     
     let mut data_map: HashMap<String, String> = HashMap::new();
-
     let cli = command::Args::parse();
     
     match cli.cmd {
