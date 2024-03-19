@@ -8,11 +8,11 @@ use command::Commands;
 
 fn main() {
     
-    let mut data_map: HashMap<String, String> = HashMap::new();
     let cli = command::Args::parse();
+    let mut data_map: HashMap<String, String> = HashMap::new();
     
     match cli.cmd {
-        Commands::Get => storage::get_all(&mut data_map),
-        Commands::Put { key, value } => storage::put(&mut data_map, &key, &value)
+        Commands::Put { key, value } => storage::put(&mut data_map, &key, &value),
+        Commands::Get => storage::get_all(&mut data_map)
     }
 }

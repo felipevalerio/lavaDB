@@ -12,6 +12,7 @@ pub fn get_all(data_map: &mut HashMap<String, String>) {
 	println!("{}", data_map.len());
 	
 	for (key, value) in data_map {
+		println!("teste");
 		println!("{} => {}", key, value);
 	}
 
