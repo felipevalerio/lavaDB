@@ -1,4 +1,4 @@
-use std::fs;
+use std::fs::File;
 use std::io::Write;
 use std::io::Result;
 use std::collections::HashMap;
@@ -11,13 +11,12 @@ pub fn put(data_map: &mut HashMap<String, String>, key: &String, value: &String)
 }
 
 
-fn save_to_disk(data_map: &mut HashMap<String, String>) -> Result<T> {
+fn save_to_disk(data_map: &mut HashMap<String, String>) -> Result<()> {
+
 	let encoded: Vec<u8> = bincode::serialize(&data_map).unwrap();
-	let mut file = fs::OpenOptions::new()
-								.write(true)
-								.open("src/db.bin");
-	
-	file.write_all(&encoded);
+	let mut file = File::create("src/db_file.txt")?;
+	file.write_all(&encoded)?;
+	Ok(())
 }
 
 
