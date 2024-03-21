@@ -1,21 +1,26 @@
-use std::fs;
 use std::fs::File;
 use std::io::Write;
+use std::path::Path;
 use std::io::Result;
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
 
+
 pub fn put(data_map: &mut HashMap<String, String>, key: &String, value: &String) {
 	
 	data_map.insert(key.to_string(), value.to_string());
-	save_to_disk(data_map);
+
+
+	let save_to_disk = save_to_disk(data_map);
+	println!("{:?}", save_to_disk)
 }
 
 
 fn save_to_disk(data_map: &mut HashMap<String, String>) -> Result<()> {
 
+	let file_path = Path::new("./").join("db.txt");
+	let mut file = File::create(file_path).expect("Erro");
 	let encoded: Vec<u8> = bincode::serialize(&data_map).unwrap();
-	let mut file = File::create("src/db_file.txt")?;
 	file.write_all(&encoded)?;
 	Ok(())
 }
