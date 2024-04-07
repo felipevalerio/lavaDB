@@ -3,7 +3,6 @@ use std::io::Write;
 use std::path::Path;
 use std::io::Result;
 use std::collections::HashMap;
-use serde::{Serialize, Deserialize};
 
 
 pub fn put(data_map: &mut HashMap<String, String>, key: &String, value: &String) {
@@ -18,7 +17,7 @@ pub fn put(data_map: &mut HashMap<String, String>, key: &String, value: &String)
 
 fn save_to_disk(data_map: &mut HashMap<String, String>) -> Result<()> {
 
-	let file_path = Path::new("./").join("db.txt");
+	let file_path = Path::new("./db_file").join("db.txt");
 	let mut file = File::create(file_path).expect("Erro");
 	let encoded: Vec<u8> = bincode::serialize(&data_map).unwrap();
 	file.write_all(&encoded)?;
