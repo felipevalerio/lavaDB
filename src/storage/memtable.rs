@@ -11,3 +11,7 @@ pub struct MemTable {
 	data: Vec<MemTableData>,
 	size: usize,
 }
+
+
+
+impl MemTable {}
